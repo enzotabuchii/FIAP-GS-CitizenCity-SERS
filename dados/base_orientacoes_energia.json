@@ -1,0 +1,58 @@
+{
+  "aviso_geral": "ATENCAO: Este sistema e um assistente educativo e informativo (Citizen Assist AI) e NAO representa um canal oficial da ANEEL, do Governo Federal ou de qualquer distribuidora de energia. Todos os valores de economia e custos sao estimativas baseadas em premissas declaradas e nao constituem garantia de resultado financeiro.",
+  "topicos": [
+    {
+      "id": "entender_fatura",
+      "titulo": "1. Como ler sua primeira conta de luz e o que mais pesa no bolso",
+      "palavras_chave": ["conta", "fatura", "ler", "kwh", "bandeira", "bandeiras", "chuveiro", "aparelhos", "consumo", "tusd", "te", "cip", "imposto"],
+      "resumo_acessivel": "Sua conta de luz mede a energia consumida em quilowatt-hora (kWh). Cada kWh equivale a um aparelho de 1.000 Watts ligado durante 1 hora.",
+      "explicacao_detalhada": [
+        "Consumo (kWh): Calculado pela formula E (kWh) = [Potencia (W) x Horas por dia x Dias no mes] / 1000.",
+        "TE (Tarifa de Energia) e TUSD (Tarifa de Uso do Sistema de Distribuicao): Na Enel SP (referencia ANEEL 2026), somam R$ 0,78938/kWh antes dos impostos (cerca de R$ 0,96/kWh com PIS/COFINS e ICMS).",
+        "Bandeiras Tarifarias (ANEEL): Indicam se a geracao de energia no pais esta mais cara (por uso de termeletricas). Verde: R$ 0,00 extra; Amarela: +R$ 1,885 a cada 100 kWh; Vermelha P1: +R$ 4,463 a cada 100 kWh; Vermelha P2: +R$ 7,875 a cada 100 kWh.",
+        "CIP / COSIP: Contribuicao municipal para iluminacao publica das ruas (valor fixo ou por faixa na prefeitura).",
+        "Viloes da primeira moradia/republica (base de 165 kWh/mes): Chuveiro eletrico (82,5 kWh/mes = 50% do consumo!), Geladeira (39,6 kWh/mes = 24%), Notebook (11,7 kWh/mes) e Ventilador (11,7 kWh/mes)."
+      ],
+      "referencias": [
+        "ANEEL - Entenda a sua Conta de Luz e Bandeiras Tarifarias (gov.br/aneel - Consultado em nov/2026)",
+        "Enel Distribuicao Sao Paulo - Tabelas Tarifarias Residenciais Subgrupo B1 (enel.com.br - Consultado em nov/2026)",
+        "PROCEL / INMETRO - Tabela de Consumo e Eficiencia de Eletrodomesticos (Consultado em nov/2026)"
+      ],
+      "limitacoes": "As tarifas variam conforme a distribuidora da sua cidade, a aliquota estadual de ICMS e a bandeira tarifaria vigente no mes."
+    },
+    {
+      "id": "tarifa_social",
+      "titulo": "2. Tarifa Social de Energia Eletrica (TSEE) e conexao com o CadUnico / ID Jovem",
+      "palavras_chave": ["tarifa social", "tsee", "cadunico", "id jovem", "desconto", "baixa renda", "bpc", "cras", "isencao", "80 kwh"],
+      "resumo_acessivel": "Se voce ou sua familia estao no CadUnico (o mesmo cadastro usado para emitir a ID Jovem!) com renda de ate meio salario minimo por pessoa, voce tem direito a 100% de desconto na tarifa de energia para os primeiros 80 kWh consumidos no mes.",
+      "explicacao_detalhada": [
+        "Quem tem direito (Lei 12.212/2010 e atualizacoes ANEEL 2025/2026): (1) Familias no CadUnico com renda per capita <= 1/2 salario minimo; (2) Beneficiarios do BPC (LOAS); (3) Familias no CadUnico com renda de ate 3 salarios minimos com morador que use equipamento medico eletrico.",
+        "Desconto Social complementar: Familias no CadUnico com renda per capita entre 1/2 e 1 salario minimo contam com tarifa reduzida (isencao de CDE) para consumo de ate 120 kWh/mes.",
+        "Como funciona a faixa de isencao da TSEE: Ate 80 kWh/mes, o desconto na tarifa de energia e de 100%. Se o consumo passar de 80 kWh (ex.: 110 kWh), os primeiros 80 kWh sao isentos e apenas os 30 kWh excedentes sao cobrados na tarifa normal.",
+        "Como solicitar: A concessao deve ser automatica se a conta de luz estiver no CPF de quem faz parte da familia no CadUnico. Caso nao venha na fatura, basta informar o NIS (Numero de Identificacao Social) e CPF no app/site da distribuidora ou atualizar o CadUnico no CRAS."
+      ],
+      "referencias": [
+        "Lei Federal n. 12.212/2010, MP n. 1.300/2025 e Resolucao Normativa ANEEL n. 1.000/2021 / n. 1.147/2025 (Consultado em nov/2026)",
+        "Ministerio do Desenvolvimento e Assistencia Social (MDS) - Cadastro Unico e ID Jovem (gov.br/mds - Consultado em nov/2026)"
+      ],
+      "limitacoes": "A conta de luz nao fica necessariamente R$ 0,00 mesmo abaixo de 80 kWh/mes, pois a taxa municipal de iluminacao publica (CIP/COSIP) e tributos especificos ainda podem ser cobrados. O cadastro no CadUnico precisa estar atualizado (menos de 2 anos)."
+    },
+    {
+      "id": "comparar_alternativas",
+      "titulo": "3. Comparacao de Alternativas: Eficiencia Energetica vs. Energia Solar por Assinatura",
+      "palavras_chave": ["comparar", "alternativas", "solar", "assinatura", "renovavel", "led", "eficiencia", "aluguel", "republica", "economia"],
+      "resumo_acessivel": "Quem mora de aluguel ou divide republica nao precisa instalar placas no telhado para usar energia limpa ou economizar. Comparamos duas alternativas reais para um consumo base de 165 kWh/mes (R$ 174,34/mes):",
+      "explicacao_detalhada": [
+        "Alternativa 1 - Eficiencia Energetica e Habitos (Troca de 4 lampadas para LED 9W + Chuveiro na posicao Verao/10 min + corte de stand-by): Reduz o consumo de 165 kWh para 102,32 kWh/mes (-38%). Investimento inicial de R$ 48,00 (4 LEDs + filtro de linha), economia estimada de R$ 60,34/mes (R$ 724,08/ano) e retorno (payback) em menos de 1 mes (24 dias). Evita ~28,96 kg de CO2/ano.",
+        "Alternativa 2 - Energia Solar por Assinatura / Geracao Compartilhada (Lei 14.300/2022): Voce assina digitalmente cotas de uma fazenda solar cooperativa (R$ 0,00 de adesao e sem obras no imovel alugado). Os creditos solares abatem a fatura com ~12% de desconto na energia compensada (135 kWh compensados, mantendo 30 kWh de taxa minima da rede). Economia estimada de R$ 15,60/mes (R$ 187,20/ano) e compensacao de 1.620 kWh/ano de fonte renovavel (~62,37 kg de CO2/ano).",
+        "Qual escolher? A Eficiencia Energetica traz a maior reducao imediata no boleto (R$ 60,34/mes) para o orcamento curto do primeiro emprego. A Energia Solar por Assinatura permite apoiar uma fonte 100% renovavel sem ter telhado proprio, mas exige consumo minimo exigido pelas cooperativas (geralmente > 120 a 150 kWh/mes) e nao vale a pena para quem ja tem Tarifa Social abaixo de 80 kWh/mes."
+      ],
+      "referencias": [
+        "Lei Federal n. 14.300/2022 (Marco Legal da Microgeracao e Minigeracao Distribuida) e REN ANEEL n. 1.059/2023 (Consultado em nov/2026)",
+        "EPE (Empresa de Pesquisa Energetica) - Balanco Energetico Nacional e Nota Tecnica de Eficiencia Energetica (Consultado em nov/2026)",
+        "MCTI - Fatores Medios de Emissao de CO2 do Sistema Interligado Nacional - SIN (Consultado em nov/2026)"
+      ],
+      "limitacoes": "O percentual de desconto da assinatura solar (tipicamente entre 10% e 15%) depende da cooperativa/consorcio disponivel na area da distribuidora, da disponibilidade de vagas e de eventual fidelidade contratual (multa rescisoria se cancelar antes do prazo sem aviso previo)."
+    }
+  ]
+}

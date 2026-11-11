@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "projeto": "Citizen Assist AI - Modulo de Energia e Sustentabilidade (SERS)",
+    "publico_alvo": "Jovens de 16 a 24 anos em transicao para a vida adulta (primeiro emprego, Jovem Aprendiz, saida da casa dos pais, republica ou apoio nas contas da familia)",
+    "frase_sintese": "Jovens de 16 a 24 anos que assumem sua primeira conta de luz com renda de primeiro emprego: o assistente ensina a ler a fatura, a pedir a Tarifa Social e a comparar formas de economizar, incluindo uma fonte renovavel acessivel a quem mora de aluguel.",
+    "periodo_referencia": {
+      "mensal_dias": 30,
+      "anual_meses": 12
+    },
+    "data_verificacao_fontes": "Novembro/2026",
+    "localidade_referencia": "Sao Paulo - SP (Area de concessao Enel Distribuicao Sao Paulo - Subgrupo B1 Residencial)"
+  },
+  "parametros_tarifarios_e_ambientais": {
+    "distribuidora_referencia": "Enel Distribuicao Sao Paulo (ANEEL REH vigente 2026/2027)",
+    "tusd_rs_kwh": 0.47242,
+    "te_rs_kwh": 0.31696,
+    "tarifa_base_aneel_sem_impostos_rs_kwh": 0.78938,
+    "aliquota_media_tributos_pis_cofins_icms": 0.18,
+    "tarifa_efetiva_com_tributos_rs_kwh": 0.96266,
+    "cip_cosip_mensal_estimada_rs": 15.50,
+    "bandeiras_tarifarias_aneel_rs_por_100kwh": {
+      "verde": 0.00,
+      "amarela": 1.885,
+      "vermelha_patamar_1": 4.463,
+      "vermelha_patamar_2": 7.875
+    },
+    "fator_emissao_sin_kgco2_por_kwh": 0.0385,
+    "fonte_fator_emissao": "MCTI / SIRENE - Fator Medio Anual de Emissao de CO2 do Sistema Interligado Nacional (SIN)"
+  },
+  "regras_tarifa_social_tsee": {
+    "base_legal": "Lei n. 12.212/2010, MP n. 1.300/2025 e Resolucoes Normativas ANEEL (REN n. 1.000/2021 e REN n. 1.147/2025)",
+    "criterios_elegibilidade": [
+      "Familia inscrita no Cadastro Unico (CadUnico) com renda familiar mensal per capita menor ou igual a meio salario minimo (mesma base exigida para a ID Jovem);",
+      "Idosos com 65 anos ou mais ou pessoas com deficiencia que recebam o Beneficio de Prestacao Continuada (BPC);",
+      "Familias no CadUnico com renda mensal de ate 3 salarios minimos que tenham morador em tratamento de saude com uso continuado de aparelhos eletricos."
+    ],
+    "faixas_desconto_atuais": {
+      "tarifa_social_ate_80kwh": "100% de desconto na tarifa de consumo de energia para os primeiros 80 kWh/mes. O consumo que ultrapassar 80 kWh/mes e tarifado pela tabela residencial normal.",
+      "desconto_social_ate_120kwh": "Para familias no CadUnico com renda per capita entre 1/2 e 1 salario minimo: tarifa reduzida (isencao da CDE) no consumo ate 120 kWh/mes."
+    },
+    "avisos_importantes": [
+      "A fatura pode nao zerar mesmo consumindo ate 80 kWh/mes, pois podem incidir a Contribuicao de Iluminacao Publica (CIP/COSIP) municipal e eventuais tributos estaduais.",
+      "O titular da conta de luz deve estar vinculado ao CadUnico atualizado nos ultimos 24 meses (no CRAS)."
+    ]
+  },
+  "comparativo_alternativas_165kwh": {
+    "cenario_base": {
+      "nome": "Cenario Base (Sem intervencao)",
+      "consumo_mensal_kwh": 165.00,
+      "consumo_anual_kwh": 1980.00,
+      "custo_mensal_energia_sem_impostos_rs": 130.25,
+      "custo_mensal_total_com_tributos_e_cip_rs": 174.34,
+      "custo_anual_total_rs": 2092.08,
+      "emissoes_anuais_kgco2": 76.23
+    },
+    "alternativa_1_eficiencia": {
+      "nome": "Alternativa 1: Eficiencia Energetica e Gestao de Habitos (Troca para LED + Uso Eficiente)",
+      "tipo": "Economia / Reducao de demanda de energia eletrica",
+      "consumo_mensal_kwh": 102.32,
+      "reducao_mensal_kwh": 62.68,
+      "reducao_percentual_consumo": 37.99,
+      "investimento_inicial_rs": 48.00,
+      "detalhe_investimento": "Compra de 4 lampadas LED 9W Selo Procel A (R$ 8,00 cada = R$ 32,00) + 1 filtro de linha com chave interruptora (R$ 16,00) para eliminar stand-by.",
+      "custo_mensal_total_com_tributos_e_cip_rs": 114.00,
+      "economia_mensal_rs": 60.34,
+      "economia_anual_rs": 724.08,
+      "tempo_retorno_payback_meses": 0.80,
+      "emissoes_evitadas_anuais_kgco2": 28.96,
+      "viabilidade_jovem_aluguel": "Alta. Nao exige reforma nem autorizacao do proprietario; as lampadas LED e o filtro de linha podem ser levados em caso de mudanca."
+    },
+    "alternativa_2_solar_assinatura": {
+      "nome": "Alternativa 2 (Fonte Renovavel): Energia Solar por Assinatura (Geracao Distribuida Compartilhada)",
+      "tipo": "Fornecimento por fonte renovavel (Solar Fotovoltaica Remota - Lei 14.300/2022)",
+      "consumo_mensal_rede_kwh": 165.00,
+      "custo_disponibilidade_minimo_kwh": 30.00,
+      "energia_compensada_creditos_solares_kwh": 135.00,
+      "desconto_contratual_sobre_energia_compensada_pct": 12.0,
+      "investimento_inicial_rs": 0.00,
+      "detalhe_investimento": "Adesao 100% digital a consorcio ou cooperativa de geracao compartilhada fotovoltaica; sem instalacao de paineis e sem obras.",
+      "custo_mensal_total_com_tributos_e_cip_rs": 158.74,
+      "economia_mensal_rs": 15.60,
+      "economia_anual_rs": 187.20,
+      "tempo_retorno_payback_meses": 0.00,
+      "energia_renovavel_injetada_anual_kwh": 1620.00,
+      "emissoes_evitadas_anuais_kgco2": 62.37,
+      "viabilidade_jovem_aluguel": "Moderada a Alta para contas acima de 120-150 kWh/mes. Nao exige telhado proprio nem investimento inicial, mas requer titularidade da conta, CPF regular e atencao a clausulas de fidelidade/aviso previo."
+    },
+    "alternativa_combinada_1_e_2": {
+      "nome": "Estrategia Combinada (Eficiencia Energetica + Energia Solar por Assinatura)",
+      "consumo_mensal_kwh": 102.32,
+      "energia_compensada_creditos_solares_kwh": 72.32,
+      "custo_mensal_total_com_tributos_e_cip_rs": 105.65,
+      "economia_mensal_total_rs": 68.69,
+      "economia_anual_total_rs": 824.28
+    }
+  }
+}
