@@ -28,7 +28,7 @@ A solução transforma conceitos técnicos em explicações simples e simulaçõ
 
 > **Público-alvo:** jovens de 16 a 24 anos, especialmente aqueles que moram de aluguel, dividem uma república ou assumiram sua primeira conta com renda de primeiro emprego ou bolsa de aprendiz.
 
-## 🧭 Navegação
+## Navegação
 
 - [Contexto e problema](#-contexto-e-problema)
 - [Funcionalidades](#-funcionalidades)
@@ -41,7 +41,7 @@ A solução transforma conceitos técnicos em explicações simples e simulaçõ
 
 ---
 
-## 🎯 Contexto e problema
+## Contexto e problema
 
 Ao sair da casa dos pais, morar em uma kitnet ou dividir uma república, o jovem geralmente entra em contato pela primeira vez com conceitos como **kWh**, **TE**, **TUSD**, **bandeiras tarifárias** e **CIP/COSIP**.
 
