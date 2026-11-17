@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Citizen Assist AI
+# Citizen Assist AI
 ### Módulo de Energia e Sustentabilidade — SERS
 
 **Uma experiência educativa para ajudar jovens a entender a conta de luz, acessar benefícios sociais e tomar decisões mais sustentáveis.**
@@ -13,7 +13,7 @@
 
 ---
 
-## 🌱 Sobre o projeto
+## Sobre o projeto
 
 O **Citizen Assist AI — SERS** é um módulo do projeto **Citizen Assist AI**, criado para orientar jovens que estão assumindo sua primeira conta de energia elétrica durante a transição para a vida adulta.
 
@@ -54,13 +54,13 @@ O projeto responde a esses desafios com linguagem acessível, comparação de ce
 
 ---
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-### 📄 Entender e reduzir a conta
+### Entender e reduzir a conta
 
 Explicações diretas sobre leitura da fatura, consumo em kWh, TE, TUSD, bandeiras tarifárias, CIP/COSIP e impacto dos principais eletrodomésticos.
 
-### 🧾 Tarifa Social de Energia Elétrica
+### Tarifa Social de Energia Elétrica
 
 Orientações sobre elegibilidade e regras relacionadas ao CadÚnico e à ID Jovem, incluindo:
 
@@ -68,7 +68,7 @@ Orientações sobre elegibilidade e regras relacionadas ao CadÚnico e à ID Jov
 - desconto social para faixas de consumo superiores;
 - alerta de que a CIP/COSIP municipal pode continuar sendo cobrada.
 
-### ☀️ Comparador de alternativas
+### Comparador de alternativas
 
 Compara três estratégias para o mesmo perfil de consumo:
 
@@ -78,13 +78,13 @@ Compara três estratégias para o mesmo perfil de consumo:
 
 O comparador apresenta custo mensal, economia anual, investimento inicial, *payback* e emissões evitadas ou compensadas.
 
-### 🧮 Simulador personalizado
+### Simulador personalizado
 
 Permite informar o consumo estimado em kWh e testar cenários de forma interativa, sem coletar dados pessoais. Indicadores de uso são registrados em [`dados/indicadores_uso.json`](dados/indicadores_uso.json).
 
 ---
 
-## 📊 Dados e premissas
+## Dados e premissas
 
 As premissas são detalhadas em:
 
@@ -118,7 +118,7 @@ E mensal (kWh) = [P (W) × t (h/dia) × d (dias/mês) × quantidade] / 1000
 
 ---
 
-## 💰 Resultados principais
+## Resultados principais
 
 Referência: 30 dias, 12 meses e consumo inicial de 165,00 kWh/mês.
 
@@ -134,14 +134,14 @@ Referência: 30 dias, 12 meses e consumo inicial de 165,00 kWh/mês.
 
 \* Parte do consumo é compensada por créditos solares, conforme as premissas do projeto.
 
-### 💡 Recomendação resumida
+### Recomendação resumida
 
 - **Eficiência energética:** apresenta o maior impacto financeiro direto e exige baixo investimento.
 - **Energia solar por assinatura:** pode ser adequada para quem mora de aluguel, pois não exige instalação no telhado.
 - **Estratégia combinada:** oferece o melhor resultado estimado no cenário analisado.
 - **Tarifa Social:** deve ser considerada antes da contratação de uma assinatura solar; para quem já possui isenção pela TSEE, a assinatura pode não ser vantajosa.
 
-### ⚠️ Limitações importantes
+### Limitações importantes
 
 - Cooperativas e consórcios de energia solar podem exigir consumo mínimo, titularidade regular e atenção a cláusulas de fidelidade.
 - A Tarifa Social não elimina necessariamente a CIP/COSIP municipal.
@@ -149,7 +149,7 @@ Referência: 30 dias, 12 meses e consumo inicial de 165,00 kWh/mês.
 
 ---
 
-## ▶️ Como executar
+## Como executar
 
 ### Pré-requisitos
 
@@ -171,7 +171,7 @@ python3 test_citizen_assist_energia.py -v
 
 ---
 
-## 🧪 Testes com usuários
+## Testes com usuários
 
 Os testes foram realizados com jovens do público-alvo, sem coleta de dados pessoais sensíveis. O relatório completo está em [`docs/TESTES_COM_USUARIOS.md`](docs/TESTES_COM_USUARIOS.md).
 
@@ -183,9 +183,9 @@ Os testes foram realizados com jovens do público-alvo, sem coleta de dados pess
 
 ---
 
-## 👥 Integrantes
+## ntegrantes
 
-**FIAP — 1º Ano de Ciência da Computação (1CC)**  
+**FIAP — 1º Ano de Ciência da Computação (1CCPQ)**  
 Global Solution 2026.2 · CitizenTech  
 Disciplina: **Soluções em Energias Renováveis e Sustentáveis (SERS)**
 
@@ -197,7 +197,7 @@ Disciplina: **Soluções em Energias Renováveis e Sustentáveis (SERS)**
 
 ---
 
-## 🔎 Referências
+## Referências
 
 1. [ANEEL — Tarifa Social de Energia Elétrica](https://www.gov.br/aneel)
 2. [Enel Distribuição São Paulo](https://www.enel.com.br)
