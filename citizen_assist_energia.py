@@ -33,7 +33,7 @@ DIRETORIO_BASE = Path(__file__).resolve().parent
 ARQUIVO_BASE_JSON = DIRETORIO_BASE / "dados" / "base_orientacoes_energia.json"
 ARQUIVO_INDICADORES = DIRETORIO_BASE / "dados" / "indicadores_uso.json"
 
-# Regex para proteção de dados pessoais (LGPD): detecta CPF, NIS/PIS, e-mail ou telefone
+# regex pa proteger os dados pessoaias
 PADRAO_DADOS_PESSOAIS = re.compile(
     r"(\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b|\b\d{11}\b|[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"
 )
@@ -79,7 +79,6 @@ class CitizenAssistEnergia:
         if maior_pontuacao == 0:
             return None, 0.0
 
-        # Calcula confiança normalizada (1 acerto = 0.65, 2 acertos = 0.85, 3+ acertos = 0.95)
         confianca = min(0.95, 0.45 + 0.20 * maior_pontuacao)
         return melhor_topico, round(confianca, 2)
 
@@ -87,20 +86,20 @@ class CitizenAssistEnergia:
         """Formata um tópico da base verificável com explicação, referências e limitações."""
         linhas = [
             "\n" + "=" * 84,
-            f"📌 {topico['titulo']}  [Confiança da orientação: {confianca * 100:.0f}%]",
+            f"{topico['titulo']}  [Confiança da orientação: {confianca * 100:.0f}%]",
             "=" * 84,
-            f"\n💡 RESUMO ACESSÍVEL:\n   {topico['resumo_acessivel']}\n",
+            f"\nRESUMO ACESSÍVEL:\n   {topico['resumo_acessivel']}\n",
             "📋 ORIENTAÇÕES PASSO A PASSO E DADOS TÉCNICOS:",
         ]
         for item in topico["explicacao_detalhada"]:
             linhas.append(f"   • {item}")
 
-        linhas.append("\n📚 REFERÊNCIAS VERIFICÁVEIS:")
+        linhas.append("\nREFERÊNCIAS VERIFICÁVEIS:")
         for ref in topico["referencias"]:
             linhas.append(f"   [{ref}]")
 
-        linhas.append(f"\n⚠️ CONDIÇÕES E LIMITAÇÕES:\n   {topico['limitacoes']}")
-        linhas.append(f"\n🔒 AVISO INSTITUCIONAL:\n   {self.aviso_geral}")
+        linhas.append(f"\nCONDIÇÕES E LIMITAÇÕES:\n   {topico['limitacoes']}")
+        linhas.append(f"\nAVISO INSTITUCIONAL:\n   {self.aviso_geral}")
         linhas.append("=" * 84)
         return "\n".join(linhas)
 
@@ -138,15 +137,15 @@ def ler_float_seguro(mensagem: str, minimo: float = 0.0, maximo: float = 10000.0
     while True:
         entrada = input(mensagem).strip().replace(",", ".")
         if CitizenAssistEnergia.contem_dados_pessoais(entrada):
-            print("⚠️ [LGPD] Por segurança, não digite CPF, NIS, telefone ou e-mail! Digite apenas o número solicitado.")
+            print("[LGPD] Por segurança, não digite CPF, NIS, telefone ou e-mail! Digite apenas o número solicitado.")
             continue
         try:
             valor = float(entrada)
             if minimo <= valor <= maximo:
                 return valor
-            print(f"⚠️ Valor fora do intervalo permitido ({minimo} a {maximo}). Tente novamente.")
+            print(f"Valor fora do intervalo permitido ({minimo} a {maximo}). Tente novamente.")
         except ValueError:
-            print("⚠️ Entrada inválida! Por favor, digite apenas um valor numérico (ex.: 150 ou 0.5).")
+            print("Entrada inválida! Por favor, digite apenas um valor numérico (ex.: 150 ou 0.5).")
 
 
 def ler_sim_nao_seguro(mensagem: str) -> bool:
@@ -157,14 +156,14 @@ def ler_sim_nao_seguro(mensagem: str) -> bool:
             return True
         if entrada in ("n", "nao", "não", "0", "no"):
             return False
-        print("⚠️ Entrada inválida! Digite 'S' para Sim ou 'N' para Não.")
+        print("Entrada inválida! Digite 'S' para Sim ou 'N' para Não.")
 
 
 def executar_simulador_interativo(assistente: CitizenAssistEnergia) -> None:
     """Simulador personalizado da primeira conta de luz para o jovem de 16 a 24 anos."""
     inicio = time.time()
     print("\n" + "=" * 84)
-    print("⚡ SIMULADOR PERSONALIZADO: SUA PRIMEIRA CONTA DE LUZ (JOVENS 16 A 24 ANOS)")
+    print("SIMULADOR PERSONALIZADO: SUA PRIMEIRA CONTA DE LUZ (JOVENS 16 A 24 ANOS)")
     print("=" * 84)
     print("Nota de privacidade (LGPD): Não coletamos nome, CPF, NIS ou endereço.\n")
 
@@ -186,7 +185,7 @@ def executar_simulador_interativo(assistente: CitizenAssistEnergia) -> None:
     )
 
     res_tsee = simular_tarifa_social_tsee(consumo_kwh, inscrito_cadunico, renda_sm)
-    consumo_eficiente_estimado = round(consumo_kwh * 0.6201, 2)  # proporção técnica do pacote de eficiência (-38%)
+    consumo_eficiente_estimado = round(consumo_kwh * 0.6201, 2)
     comp = comparar_alternativas_energia(consumo_kwh, consumo_eficiente_estimado)
 
     alt1 = comp["alternativa_1_eficiencia"]
@@ -221,23 +220,23 @@ def executar_simulador_interativo(assistente: CitizenAssistEnergia) -> None:
     print("\n[C] RECOMENDAÇÃO FINAL E LIMITAÇÕES:")
     if res_tsee["elegivel_tsee"] and consumo_eficiente_estimado <= 80.0:
         print(
-            "  ✅ DICA DE OURO: Aplicando a Alternativa 1 (Eficiência Energética), seu consumo cai para perto ou abaixo "
+            "  DICA DE OURO: Aplicando a Alternativa 1 (Eficiência Energética), seu consumo cai para perto ou abaixo "
             "de 80 kWh/mês, permitindo aproveitar quase 100% de isenção na Tarifa Social (TSEE)! Nesse caso, NÃO assine "
             "energia solar compartilhada, pois a TSEE já garante desconto muito maior."
         )
     elif consumo_kwh < 110.0:
         print(
-            "  ✅ RECOMENDAÇÃO: Priorize a Alternativa 1 (Eficiência Energética). Como seu consumo já é baixo, "
+            "  RECOMENDAÇÃO: Priorize a Alternativa 1 (Eficiência Energética). Como seu consumo já é baixo, "
             "muitas cooperativas de Energia Solar por Assinatura exigem consumo mínimo de 120 a 150 kWh/mês."
         )
     else:
         print(
-            f"  ✅ RECOMENDAÇÃO: Comece pela Alternativa 1 (que economiza R$ {alt1['economia_mensal_rs']:.2f}/mês imediatamente) "
+            f"  RECOMENDAÇÃO: Comece pela Alternativa 1 (que economiza R$ {alt1['economia_mensal_rs']:.2f}/mês imediatamente) "
             f"e combine com a Alternativa 2 (Energia Solar por Assinatura) para usar energia 100% renovável sem precisar de telhado "
             f"próprio, alcançando economia combinada de R$ {comb['economia_mensal_rs']:.2f}/mês (R$ {comb['economia_anual_rs']:.2f}/ano)!"
         )
 
-    print("\n⚠️ AVISO DE LIMITAÇÕES E FONTES:")
+    print("\nAVISO DE LIMITAÇÕES E FONTES:")
     print("  • Cálculos baseados na tarifa residencial B1 da Enel SP (ANEEL 2026: R$ 0,78938/kWh s/ impostos; ~R$ 0,96266/kWh c/ tributos).")
     print("  • Fontes: Lei nº 12.212/2010 e REN ANEEL nº 1.147/2025 (TSEE); Lei nº 14.300/2022 (GD Compartilhada); PROCEL/INMETRO; MCTI.")
     print("  • Estimativas não representam garantia de resultado financeiro e este assistente não é canal oficial do governo.")
@@ -253,7 +252,7 @@ def menu_interativo() -> None:
 
     while True:
         print("\n" + "=" * 84)
-        print("🌱 CITIZEN ASSIST AI — MÓDULO DE ENERGIA E SUSTENTABILIDADE (SERS)")
+        print("CITIZEN ASSIST AI — MÓDULO DE ENERGIA E SUSTENTABILIDADE (SERS)")
         print("   Apoio ao jovem (16 a 24 anos) na sua primeira conta de luz e primeiro emprego")
         print("=" * 84)
         print("  [1] Como ler sua primeira conta de luz (kWh, Bandeiras Tarifárias e aparelhos que mais pesam)")
@@ -268,7 +267,7 @@ def menu_interativo() -> None:
         escolha = input("Escolha uma opção (0 a 6): ").strip()
 
         if assistente.contem_dados_pessoais(escolha):
-            print("\n⚠️ [PROTEÇÃO DE DADOS - LGPD] Não digite CPF, NIS ou dados pessoais no assistente!")
+            print("\n[PROTEÇÃO DE DADOS - LGPD] Não digite CPF, NIS ou dados pessoais no assistente!")
             continue
 
         inicio = time.time()
@@ -289,7 +288,7 @@ def menu_interativo() -> None:
         elif escolha == "6":
             pergunta = input("\nDigite sua dúvida sobre conta de luz, Tarifa Social ou energia solar: ").strip()
             if assistente.contem_dados_pessoais(pergunta):
-                print("\n⚠️ [LGPD] Detectamos um possível dado pessoal (CPF/NIS/e-mail). Sua pergunta não foi gravada.")
+                print("\n[LGPD] Detectamos um possível dado pessoal (CPF/NIS/e-mail). Sua pergunta não foi gravada.")
                 continue
             topico, confianca = assistente.buscar_orientacao_por_pergunta(pergunta)
             if topico is not None:
@@ -297,16 +296,16 @@ def menu_interativo() -> None:
                 assistente.registrar_indicador("pergunta_livre_respondida", time.time() - inicio, True, 5)
             else:
                 print(
-                    "\nℹ️ Não encontrei uma resposta exata na base verificável para esses termos.\n"
+                    "\nNão encontrei uma resposta exata na base verificável para esses termos.\n"
                     "   Tente perguntar sobre: 'como ler a fatura', 'bandeiras', 'chuveiro', "
                     "'tarifa social', 'cadunico', 'id jovem', 'energia solar por assinatura' ou 'aluguel'."
                 )
                 assistente.registrar_indicador("pergunta_livre_sem_correspondencia", time.time() - inicio, False, 4)
         elif escolha == "0":
-            print("\nObrigado por utilizar o Citizen Assist AI! Use a energia de forma consciente. 👋")
+            print("\nObrigado por utilizar o Citizen Assist AI! Use a energia de forma consciente.")
             break
         else:
-            print("\n⚠️ Opção inválida! Por favor, digite apenas um número entre 0 e 6.")
+            print("\nOpção inválida! Por favor, digite apenas um número entre 0 e 6.")
 
 
 if __name__ == "__main__":
