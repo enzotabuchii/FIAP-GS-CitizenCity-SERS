@@ -1,132 +1,217 @@
-# Citizen Assist AI — Módulo de Energia e Sustentabilidade (SERS)
+<div align="center">
 
-> **"Jovens de 16 a 24 anos que assumem sua primeira conta de luz com renda de primeiro emprego: o assistente ensina a ler a fatura, a pedir a Tarifa Social e a comparar formas de economizar, incluindo uma fonte renovável acessível a quem mora de aluguel."**
+# ⚡ Citizen Assist AI
+### Módulo de Energia e Sustentabilidade — SERS
 
----
+**Uma experiência educativa para ajudar jovens a entender a conta de luz, acessar benefícios sociais e tomar decisões mais sustentáveis.**
 
-## 1. Identificação dos Integrantes
-* **Curso / Turma:** 1º Ano de Ciência da Computação (1CC) — Global Solution 2026.2 (*CitizenTech*)
-* **Disciplina:** Soluções em Energias Renováveis e Sustentáveis (SERS)
-* **Integrantes:**
-  * `ENZO SEIJI DELGADO TABUCHI` — RM: `573156`
-  * `LUCA ALMEIDA LUCARELI` — RM: `569061`
-  * `HENRIQUE ALMEIDA LUCARELI` — RM: `569183`
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Status](https://img.shields.io/badge/status-Global%20Solution%202026.2-0A7EA4)](https://github.com/enzotabuchii/FIAP-GS-CitizenCity-SERS)
+[![LGPD](https://img.shields.io/badge/dados-LGPD%20friendly-2E8B57)](https://www.gov.br/esocial/pt-br/assuntos/lei-geral-de-protecao-de-dados-pessoais-lgpd)
 
----
-
-## 2. Definição do Contexto: Público-Alvo e Necessidade Energética Real
-
-### Público Escolhido
-Jovens de **16 a 24 anos** (recorte alinhado ao projeto principal de PCP e ao site do *Citizen Assist AI*, que atende jovens de 15 a 24 anos em transição para a vida adulta, tirando seus primeiros documentos civis — CPF, Título de Eleitor, Alistamento, conta Gov.br, CTPS Digital e ID Jovem — e ingressando no primeiro emprego ou programa de Jovem Aprendiz).
-
-### Problema e Necessidade Energética Abordada
-Quando esse jovem sai da casa dos pais, divide uma república/kitnet estudantil ou passa a assumir contas da família com salário de primeiro emprego ou bolsa de aprendiz, ele enfrenta pela primeira vez a **fatura de energia elétrica**. Na prática:
-1. **Desconhecimento técnico sobre a fatura:** Nunca leu uma conta de luz, não compreende o significado de **kWh**, **TE**, **TUSD**, **Bandeiras Tarifárias** ou **CIP/COSIP**, nem sabe quais equipamentos realmente pesam no fim do mês.
-2. **Perda de benefícios sociais por falta de orientação:** Muitos jovens já possuem (ou têm direito ao) **Cadastro Único (CadÚnico)** para emitir a **ID Jovem**, mas desconhecem que esse mesmo cadastro garante a **Tarifa Social de Energia Elétrica (TSEE)**, com **100% de isenção na tarifa de consumo até 80 kWh/mês**.
-3. **Barreira do aluguel para acesso a fontes renováveis:** Como a maioria mora de aluguel ou em repúblicas, não pode fazer obras nem investir milhares de reais na instalação de painéis solares no telhado, precisando comparar alternativas acessíveis — como medidas práticas de **Eficiência Energética** versus **Energia Solar por Assinatura (Geração Distribuída Compartilhada)**.
+</div>
 
 ---
 
-## 3. Funcionalidades de Energia Incorporadas ao Citizen Assist AI
+## 🌱 Sobre o projeto
 
-O módulo integra três frentes práticas ao assistente digital:
-1. **Entender e Reduzir a Conta:** Explica em linguagem acessível a leitura da fatura (kWh, TE, TUSD, Bandeiras Tarifárias ANEEL e CIP) e apresenta o peso de cada eletrodoméstico no consumo mensal.
-2. **Tarifa Social de Energia Elétrica (TSEE) + Conexão com CadÚnico/ID Jovem:** Verifica elegibilidade conforme as regras vigentes da ANEEL (**Lei nº 12.212/2010**, **MP nº 1.300/2025** e **REN ANEEL nº 1.147/2025**), detalhando a faixa de isenção de 100% até 80 kWh/mês e o Desconto Social até 120 kWh/mês.
-3. **Comparador Técnico de Alternativas (Eficiência Energética vs. Energia Solar por Assinatura):** Simula custos mensais/anuais, investimento inicial, *payback* e emissões de $\text{CO}_2$ evitadas para um período de referência comum (30 dias / 12 meses).
-4. **Simulador Personalizado Interativo + Proteção LGPD:** Permite ao usuário simular seu próprio consumo em kWh, bloqueia a coleta de dados pessoais (CPF/NIS/e-mail) e registra indicadores de uso em [`dados/indicadores_uso.json`](dados/indicadores_uso.json).
+O **Citizen Assist AI — SERS** é um módulo do projeto **Citizen Assist AI**, criado para orientar jovens que estão assumindo sua primeira conta de energia elétrica durante a transição para a vida adulta.
 
----
+A solução transforma conceitos técnicos em explicações simples e simulações práticas, ajudando o usuário a:
 
-## 4. Dados Utilizados, Origem, Unidades e Premissas
+- entender os principais itens da fatura;
+- identificar oportunidades de economia;
+- verificar informações sobre a Tarifa Social de Energia Elétrica;
+- comparar eficiência energética com energia solar por assinatura;
+- estimar custos, economia e emissões evitadas;
+- simular cenários sem informar CPF, NIS, e-mail ou outros dados pessoais.
 
-Todos os dados e premissas estão documentados em [`dados/consumo_aparelhos_jovem.csv`](dados/consumo_aparelhos_jovem.csv) e [`dados/comparativo_alternativas.json`](dados/comparativo_alternativas.json).
+> **Público-alvo:** jovens de 16 a 24 anos, especialmente aqueles que moram de aluguel, dividem uma república ou assumiram sua primeira conta com renda de primeiro emprego ou bolsa de aprendiz.
 
-* **Unidades adotadas:** Potência em Watts ($\text{W}$) e quilowatts ($\text{kW}$); tempo em horas por dia ($\text{h/dia}$); período mensal de $\text{30 dias}$ e anual de $\text{12 meses}$; energia ativa em quilowatt-hora ($\text{kWh/mês}$ e $\text{kWh/ano}$); tarifa em $\text{R\$/kWh}$; emissões em $\text{kg CO}_2\text{e/ano}$.
-* **Fórmula fundamental de consumo energético:**
-  $$E_{\text{mensal}}\,(\text{kWh}) = \frac{P\,(\text{W}) \times t\,(\text{h/dia}) \times d\,(\text{dias/mês}) \times N_{\text{aparelhos}}}{1000}$$
-* **Parâmetros tarifários (Verificados em Novembro/2026 — Área de referência Enel Distribuição SP, Subgrupo B1 Residencial Convencional):**
-  * **TUSD:** $\text{R\$ } 0,47242/\text{kWh}$ | **TE:** $\text{R\$ } 0,31696/\text{kWh}$
-  * **Tarifa Base Homologada ANEEL (sem tributos):** $\text{R\$ } 0,78938/\text{kWh}$
-  * **Tarifa Efetiva com Tributos Médios (PIS/COFINS + ICMS ~18%):** $\text{R\$ } 0,96266/\text{kWh}$
-  * **Contribuição de Iluminação Pública (CIP/COSIP municipal estimada):** $\text{R\$ } 15,50/\text{mês}$
-  * **Bandeiras Tarifárias ANEEL vigentes:** Verde ($\text{R\$ } 0,00$); Amarela ($+\text{R\$ } 1,885/100\text{ kWh}$); Vermelha Patamar 1 ($+\text{R\$ } 4,463/100\text{ kWh}$); Vermelha Patamar 2 ($+\text{R\$ } 7,875/100\text{ kWh}$).
-* **Fator de emissão de $\text{CO}_2$ do SIN (MCTI):** $0,0385\text{ kg CO}_2\text{e}/\text{kWh}$.
+## 🧭 Navegação
 
-### Levantamento de Consumo — Moradia Jovem / República (Período: 30 dias)
-
-| Equipamento | Qtd | Potência Base (W) | Uso Base (h/dia) | Consumo Base (kWh/mês) | Consumo Eficiente (kWh/mês) | Tipo de Dado e Origem |
-| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
-| **Chuveiro Elétrico** | 1 | 5.500 W | 0,50 h (30 min) | **82,50** | **37,62** *(3.800W / 20 min)* | Estimado sobre tabela pública PROCEL/INMETRO |
-| **Geladeira 1 Porta Frost Free** | 1 | 110 W *(efet.)* | 24,0 h *(fator 0,5)* | **39,60** | **34,20** *(ajuste termostato)* | Público / Selo Procel INMETRO |
-| **Notebook (Estudo/Trabalho)** | 1 | 65 W | 6,00 h | **11,70** | **9,75** *(5,0 h + suspensão)* | Estimado sobre especificação média PROCEL/EPE |
-| **Ventilador de Mesa** | 1 | 65 W | 6,00 h | **11,70** | **8,78** *(4,5 h uso noturno)* | Público / Tabela INMETRO/PROCEL |
-| **Lâmpadas Residenciais** | 4 | 15 W *(fluor.)* | 5,00 h | **9,00** | **4,86** *(LED 9W / 4,5 h)* | Público / Guia Eficiência PROCEL/ANEEL |
-| **Micro-ondas / Airfryer** | 1 | 1.200 W | 0,20 h (12 min) | **7,20** | **6,12** *(10 min/dia)* | Estimado para preparo de marmita do trabalho |
-| **Stand-by e Carregadores** | 1 | 11 W *(agreg.)* | 10,00 h | **3,30** | **0,99** *(filtro de linha)* | Estimado sobre medição média PROCEL/INMETRO |
-| **TOTAL MENSAL (30 DIAS)** | — | — | — | **165,00 kWh** | **102,32 kWh** | **Redução de 62,68 kWh/mês (-37,99%)** |
+- [Contexto e problema](#-contexto-e-problema)
+- [Funcionalidades](#-funcionalidades)
+- [Dados e premissas](#-dados-e-premissas)
+- [Resultados principais](#-resultados-principais)
+- [Como executar](#-como-executar)
+- [Testes com usuários](#-testes-com-usuários)
+- [Integrantes](#-integrantes)
+- [Referências](#-referências)
 
 ---
 
-## 5. Cálculos, Comparação de Alternativas e Justificativas Técnicas
+## 🎯 Contexto e problema
 
-A comparação considera a mesma necessidade energética inicial (**165,00 kWh/mês** ou **1.980,00 kWh/ano** em Bandeira Verde, com fatura base de **R$ 174,34/mês** incluindo tributos e CIP de R$ 15,50):
+Ao sair da casa dos pais, morar em uma kitnet ou dividir uma república, o jovem geralmente entra em contato pela primeira vez com conceitos como **kWh**, **TE**, **TUSD**, **bandeiras tarifárias** e **CIP/COSIP**.
 
-| Indicador (Referência: 30 dias / 12 meses) | Cenário Base (Sem ação) | Alternativa 1: Eficiência Energética (LED + Chuveiro Verão + Stand-by) | Alternativa 2 (Renovável): Energia Solar por Assinatura (GD Compartilhada - 12% desc.) | Estratégia Combinada (Alt. 1 + Alt. 2) |
-| :--- | :---: | :---: | :---: | :---: |
-| **Consumo da Rede (kWh/mês)** | 165,00 kWh | **102,32 kWh** (-37,99%) | 165,00 kWh *(135 kWh compensados por solar)* | **102,32 kWh** *(72,32 kWh compensados)* |
-| **Investimento Inicial (R$)** | R$ 0,00 | **R$ 48,00** *(4 LEDs 9W + 1 filtro de linha)* | **R$ 0,00** *(adesão digital sem obras)* | **R$ 48,00** |
-| **Custo Mensal Total (R$/mês)** | R$ 174,34 | **R$ 114,00** | **R$ 158,74** | **R$ 105,65** |
-| **Economia Mensal Estimada (R$/mês)** | R$ 0,00 | **R$ 60,34 / mês** | **R$ 15,60 / mês** | **R$ 68,69 / mês** |
-| **Economia Anual Estimada (R$/ano)** | R$ 0,00 | **R$ 724,08 / ano** | **R$ 187,20 / ano** | **R$ 824,28 / ano** |
-| **Retorno do Investimento (Payback)** | — | **0,80 mês (~24 dias)** | **Imediato (0 meses)** | **0,70 mês (~21 dias)** |
-| **Emissões Evitadas / Compensadas** | 0,00 kg $\text{CO}_2\text{e}$ | **28,96 kg $\text{CO}_2\text{e}$/ano** | **62,37 kg $\text{CO}_2\text{e}$/ano** *(1.620 kWh solares)* | **62,37 kg $\text{CO}_2\text{e}$/ano** |
+Além da dificuldade para interpretar a fatura, também existem dois desafios importantes:
 
-### Justificativa das Recomendações (Custos, Viabilidade e Impactos Ambientais)
-1. **Alternativa 1 (Eficiência Energética e Mudança de Hábitos):** Apresenta o **maior impacto financeiro direto** ($\text{R\$ } 60,34/\text{mês}$ de economia), essencial para a renda restrita de primeiro emprego. O investimento de $\text{R\$ } 48,00$ (4 lâmpadas LED 9W Selo Procel A + filtro de linha com interruptor) paga-se em apenas **24 dias** e reduz fisicamente o desperdício de energia. Se o jovem tiver direito à **Tarifa Social (TSEE)** via CadÚnico, a redução de consumo aproxima a fatura do limite de **80 kWh/mês**, faixa em que a tarifa de consumo tem **100% de isenção**.
-2. **Alternativa 2 — Fonte Renovável (Energia Solar por Assinatura / Geração Compartilhada — Lei nº 14.300/2022):** Resolve a principal barreira de quem mora de aluguel ou divide república: **não exige telhado próprio, obras nem investimento inicial ($\text{R\$ } 0,00$)**. Por meio de consórcio ou cooperativa de geração distribuída remota, $135\text{ kWh/mês}$ ($165\text{ kWh}$ menos $30\text{ kWh}$ de custo de disponibilidade monofásico) são compensados com créditos solares e desconto de $12\%$, gerando economia de $\text{R\$ } 15,60/\text{mês}$ ($\text{R\$ } 187,20/\text{ano}$) e contratando $1.620\text{ kWh/ano}$ de fonte 100% renovável.
-3. **Limitações explicitadas ao usuário:**
-   * A Energia Solar por Assinatura exige consumo mínimo na maioria das cooperativas (geralmente $> 120\text{ a } 150\text{ kWh/mês}$), titularidade do CPF sem inadimplência e atenção a cláusulas de fidelidade/aviso prévio.
-   * Quem já é beneficiário da **Tarifa Social (TSEE)** com consumo até $80\text{ kWh/mês}$ **não deve contratar** assinatura solar, pois já possui 100% de isenção na tarifa de energia.
-   * Na TSEE, mesmo consumindo até $80\text{ kWh/mês}$, a fatura não zera integralmente devido à cobrança da **CIP/COSIP** municipal.
+1. **Benefícios pouco conhecidos:** pessoas que possuem ou têm direito ao CadÚnico podem não saber que ele também se relaciona à Tarifa Social de Energia Elétrica (TSEE).
+2. **Barreira do aluguel:** quem não possui imóvel próprio normalmente não pode instalar painéis solares no telhado e precisa conhecer alternativas sem obras ou alto investimento inicial.
+
+O projeto responde a esses desafios com linguagem acessível, comparação de cenários e transparência sobre limitações e custos.
 
 ---
 
-## 6. Instruções para Executar e Testar a Solução
+## ✨ Funcionalidades
+
+### 📄 Entender e reduzir a conta
+
+Explicações diretas sobre leitura da fatura, consumo em kWh, TE, TUSD, bandeiras tarifárias, CIP/COSIP e impacto dos principais eletrodomésticos.
+
+### 🧾 Tarifa Social de Energia Elétrica
+
+Orientações sobre elegibilidade e regras relacionadas ao CadÚnico e à ID Jovem, incluindo:
+
+- isenção de 100% na tarifa de consumo até 80 kWh/mês, conforme as premissas adotadas no projeto;
+- desconto social para faixas de consumo superiores;
+- alerta de que a CIP/COSIP municipal pode continuar sendo cobrada.
+
+### ☀️ Comparador de alternativas
+
+Compara três estratégias para o mesmo perfil de consumo:
+
+- eficiência energética e mudança de hábitos;
+- energia solar por assinatura, em geração distribuída compartilhada;
+- estratégia combinada.
+
+O comparador apresenta custo mensal, economia anual, investimento inicial, *payback* e emissões evitadas ou compensadas.
+
+### 🧮 Simulador personalizado
+
+Permite informar o consumo estimado em kWh e testar cenários de forma interativa, sem coletar dados pessoais. Indicadores de uso são registrados em [`dados/indicadores_uso.json`](dados/indicadores_uso.json).
+
+---
+
+## 📊 Dados e premissas
+
+As premissas são detalhadas em:
+
+- [`dados/consumo_aparelhos_jovem.csv`](dados/consumo_aparelhos_jovem.csv)
+- [`dados/comparativo_alternativas.json`](dados/comparativo_alternativas.json)
+
+### Fórmula de consumo mensal
+
+```text
+E mensal (kWh) = [P (W) × t (h/dia) × d (dias/mês) × quantidade] / 1000
+```
+
+### Perfil de consumo analisado
+
+| Cenário | Consumo mensal | Redução |
+| --- | ---: | ---: |
+| Moradia jovem / república — uso base | **165,00 kWh** | — |
+| Moradia jovem / república — uso eficiente | **102,32 kWh** | **62,68 kWh (-37,99%)** |
+
+### Equipamentos com maior impacto
+
+| Equipamento | Consumo base | Consumo eficiente |
+| --- | ---: | ---: |
+| Chuveiro elétrico | 82,50 kWh/mês | 37,62 kWh/mês |
+| Geladeira | 39,60 kWh/mês | 34,20 kWh/mês |
+| Notebook | 11,70 kWh/mês | 9,75 kWh/mês |
+| Ventilador | 11,70 kWh/mês | 8,78 kWh/mês |
+| Lâmpadas | 9,00 kWh/mês | 4,86 kWh/mês |
+
+> Os valores completos, as fontes dos dados e as premissas tarifárias estão disponíveis nos arquivos da pasta [`dados`](dados/).
+
+---
+
+## 💰 Resultados principais
+
+Referência: 30 dias, 12 meses e consumo inicial de 165,00 kWh/mês.
+
+| Indicador | Cenário base | Eficiência energética | Solar por assinatura | Estratégia combinada |
+| --- | ---: | ---: | ---: | ---: |
+| Consumo da rede | 165,00 kWh | **102,32 kWh** | **165,00 kWh*** | **102,32 kWh*** |
+| Investimento inicial | R$ 0,00 | **R$ 48,00** | **R$ 0,00** | **R$ 48,00** |
+| Custo mensal total | R$ 174,34 | **R$ 114,00** | **R$ 158,74** | **R$ 105,65** |
+| Economia mensal | — | **R$ 60,34** | **R$ 15,60** | **R$ 68,69** |
+| Economia anual | — | **R$ 724,08** | **R$ 187,20** | **R$ 824,28** |
+| *Payback* estimado | — | **24 dias** | **imediato** | **21 dias** |
+| Emissões evitadas/compensadas | — | **28,96 kg CO₂e/ano** | **62,37 kg CO₂e/ano** | **62,37 kg CO₂e/ano** |
+
+\* Parte do consumo é compensada por créditos solares, conforme as premissas do projeto.
+
+### 💡 Recomendação resumida
+
+- **Eficiência energética:** apresenta o maior impacto financeiro direto e exige baixo investimento.
+- **Energia solar por assinatura:** pode ser adequada para quem mora de aluguel, pois não exige instalação no telhado.
+- **Estratégia combinada:** oferece o melhor resultado estimado no cenário analisado.
+- **Tarifa Social:** deve ser considerada antes da contratação de uma assinatura solar; para quem já possui isenção pela TSEE, a assinatura pode não ser vantajosa.
+
+### ⚠️ Limitações importantes
+
+- Cooperativas e consórcios de energia solar podem exigir consumo mínimo, titularidade regular e atenção a cláusulas de fidelidade.
+- A Tarifa Social não elimina necessariamente a CIP/COSIP municipal.
+- Valores tarifários, descontos e regras podem mudar; as simulações são educativas e não substituem a consulta à distribuidora ou aos órgãos oficiais.
+
+---
+
+## ▶️ Como executar
 
 ### Pré-requisitos
-* Python 3.10 ou superior (utiliza apenas bibliotecas padrão do Python — não requer instalação de pacotes externos).
 
-### Comandos de Execução
+- Python **3.10 ou superior**
+- Nenhuma biblioteca externa: o projeto utiliza apenas a biblioteca padrão do Python.
+
+### Comandos
+
 ```bash
-# 1. Executar o Assistente Digital Interativo (Menu + Simulador + Busca Inteligente)
+# Assistente interativo com menu, simulador e busca inteligente
 python3 citizen_assist_energia.py
 
-# 2. Exibir o Relatório Analítico Completo no Terminal (Tabelas e Cálculos)
+# Relatório analítico com tabelas e cálculos
 python3 analise_consumo_alternativas.py
 
-# 3. Executar a Suíte de Testes Automatizados
+# Suíte de testes automatizados
 python3 test_citizen_assist_energia.py -v
 ```
 
 ---
 
-## 7. Registros dos Testes com Usuários e Ajustes Realizados
+## 🧪 Testes com usuários
 
-Os testes foram conduzidos com jovens do público-alvo (16 a 24 anos) sem coleta de dados pessoais sensíveis. O detalhamento completo encontra-se em [`docs/TESTES_COM_USUARIOS.md`](docs/TESTES_COM_USUARIOS.md):
+Os testes foram realizados com jovens do público-alvo, sem coleta de dados pessoais sensíveis. O relatório completo está em [`docs/TESTES_COM_USUARIOS.md`](docs/TESTES_COM_USUARIOS.md).
 
-| Caso de Teste | Perfil do Usuário (Anônimo) | Situação Testada | Comentário Recebido | Ajuste Realizado no Sistema |
-| :---: | :--- | :--- | :--- | :--- |
-| **Teste 1** | Jovem de 18 anos (Jovem Aprendiz, divide kitnet) | Dúvida sobre por que a primeira conta veio R$ 175 e o que significa "TUSD" e "TE". | *"Não sabia que o chuveiro no modo inverno gastava metade da conta nem o que era TUSD."* | Adicionado destaque visual em percentual (`50% do consumo no chuveiro`) e tradução direta das siglas TUSD e TE no Tópico 1. |
-| **Teste 2** | Jovem de 20 anos (possui ID Jovem / CadÚnico) | Simulação de Tarifa Social para consumo de 75 kWh/mês e dúvida se a conta viria R$ 0,00. | *"Achei que abaixo de 80 kWh a conta zerava totalmente, bom avisar da taxa de iluminação da prefeitura."* | Incluído alerta explícito na simulação da TSEE explicando que a CIP/COSIP municipal (~R$ 15,50) continua sendo cobrada mesmo com 100% de desconto no consumo. |
-| **Teste 3** | Jovem de 22 anos (primeiro emprego CLT, mora de aluguel) | Comparação entre troca de lâmpadas/hábitos e Energia Solar por Assinatura para 165 kWh/mês. | *"Não sabia que existia assinatura solar sem instalar placa no telhado, mas queria saber se vale a pena junto com a Tarifa Social."* | Criada regra automática no simulador que desaconselha a assinatura solar quando o usuário já tem isenção pela TSEE abaixo de 80 kWh/mês. |
+| Caso | Situação observada | Ajuste realizado |
+| :---: | --- | --- |
+| **1** | Dúvidas sobre TUSD, TE e o impacto do chuveiro na primeira conta. | Destaque visual para as siglas e para o percentual de consumo do chuveiro. |
+| **2** | Expectativa de que uma conta abaixo de 80 kWh ficaria totalmente zerada. | Alerta sobre a cobrança da CIP/COSIP municipal. |
+| **3** | Comparação entre economia doméstica, assinatura solar e Tarifa Social. | Regra que desaconselha a assinatura solar quando já existe isenção pela TSEE. |
 
 ---
 
-## 8. Referências Verificáveis Utilizadas
+## 👥 Integrantes
 
-1. **ANEEL (Agência Nacional de Energia Elétrica):** *Tarifa Social de Energia Elétrica (TSEE) — Lei nº 12.212/2010, MP nº 1.300/2025 e Resolução Normativa ANEEL nº 1.000/2021 / nº 1.147/2025*. Disponível em: `https://www.gov.br/aneel`. Consultado em: nov/2026.
-2. **ANEEL / Enel Distribuição São Paulo:** *Resolução Homologatória de Tarifas Residenciais Subgrupo B1 (TUSD R$ 0,47242/kWh + TE R$ 0,31696/kWh = R$ 0,78938/kWh) e Valores das Bandeiras Tarifárias 2026*. Disponível em: `https://www.enel.com.br` e `https://www.gov.br/aneel`. Consultado em: nov/2026.
-3. **Brasil — Marco Legal da Geração Distribuída:** *Lei Federal nº 14.300, de 6 de janeiro de 2022, e Resolução Normativa ANEEL nº 1.059/2023 (Geração Compartilhada por Consórcio ou Cooperativa)*. Disponível em: `https://www.planalto.gov.br`. Consultado em: nov/2026.
-4. **PROCEL / INMETRO:** *Tabelas de Consumo e Eficiência Energética de Eletrodomésticos Residenciais (Chuveiros, Refrigeradores, Lâmpadas LED e Ventiladores)*. Disponível em: `https://www.gov.br/inmetro` e Portal Procel Info. Consultado em: nov/2026.
-5. **MCTI (Ministério da Ciência, Tecnologia e Inovação) / SIRENE:** *Fatores Médios Anuais de Emissão de $\text{CO}_2$ pela Geração de Energia Elétrica no Sistema Interligado Nacional (SIN)*. Disponível em: `https://www.gov.br/mcti`. Consultado em: nov/2026.
-6. **MDS (Ministério do Desenvolvimento e Assistência Social):** *Cadastro Único (CadÚnico) e Programa ID Jovem*. Disponível em: `https://www.gov.br/mds`. Consultado em: nov/2026.
+**FIAP — 1º Ano de Ciência da Computação (1CC)**  
+Global Solution 2026.2 · CitizenTech  
+Disciplina: **Soluções em Energias Renováveis e Sustentáveis (SERS)**
+
+| Integrante | RM |
+| --- | ---: |
+| **Enzo Seiji Delgado Tabuchi** | `573156` |
+| **Luca Almeida Lucareli** | `569061` |
+| **Henrique Almeida Lucareli** | `569183` |
+
+---
+
+## 🔎 Referências
+
+1. [ANEEL — Tarifa Social de Energia Elétrica](https://www.gov.br/aneel)
+2. [Enel Distribuição São Paulo](https://www.enel.com.br)
+3. [Lei nº 14.300/2022 — Marco Legal da Geração Distribuída](https://www.planalto.gov.br)
+4. [INMETRO — Eficiência energética](https://www.gov.br/inmetro)
+5. [MCTI — Fatores de emissão](https://www.gov.br/mcti)
+6. [MDS — Cadastro Único e ID Jovem](https://www.gov.br/mds)
+
+> Consultas e parâmetros utilizados no trabalho: **novembro de 2026**. Consulte sempre as fontes oficiais para obter regras e tarifas atualizadas.
+
+---
+
+<div align="center">
+
+**Citizen Assist AI · Energia acessível, informação clara e escolhas sustentáveis.**
+
+</div>
