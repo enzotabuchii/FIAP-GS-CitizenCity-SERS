@@ -8,9 +8,9 @@
 * **Curso / Turma:** 1º Ano de Ciência da Computação (1CC) — Global Solution 2026.2 (*CitizenTech*)
 * **Disciplina:** Soluções em Energias Renováveis e Sustentáveis (SERS)
 * **Integrantes:**
-  * `[Preencher Nome Completo 1]` — RM: `[Preencher RM 1]`
-  * `[Preencher Nome Completo 2]` — RM: `[Preencher RM 2]`
-  * `[Preencher Nome Completo 3]` — RM: `[Preencher RM 3]`
+  * `ENZO SEIJI DELGADO TABUCHI` — RM: `573156`
+  * `LUCA ALMEIDA LUCARELI` — RM: `569061`
+  * `HENRIQUE ALMEIDA LUCARELI` — RM: `569183`
 
 ---
 
