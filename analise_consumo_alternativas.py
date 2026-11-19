@@ -16,19 +16,14 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List
 
-
-# PARÂMETROS TÉCNICOS E TARIFÁRIOS (VERIFICADOS EM NOVEMBRO/2026)
-# Fontes: ANEEL (REH Enel SP 2026/2027), Lei 12.212/2010 (TSEE),
-# Lei 14.300/2022 (GD Compartilhada), PROCEL/INMETRO e MCTI (SIN)
-
-TUSD_ENEL_SP_RS_KWH: float = 0.47242 # R$/kWh (ANEEL Subgrupo B1 Residencial)
-TE_ENEL_SP_RS_KWH: float = 0.31696 # R$/kWh (ANEEL Subgrupo B1 Residencial)
-TARIFA_BASE_ANEEL_RS_KWH: float = round(TUSD_ENEL_SP_RS_KWH + TE_ENEL_SP_RS_KWH, 5)  # 0.78938 R$/kWh
-ALIQUOTA_MEDIA_TRIBUTOS: float = 0.18 # PIS/COFINS + ICMS médio residencial SP (18% por dentro)
+TUSD_ENEL_SP_RS_KWH: float = 0.47242
+TE_ENEL_SP_RS_KWH: float = 0.31696
+TARIFA_BASE_ANEEL_RS_KWH: float = round(TUSD_ENEL_SP_RS_KWH + TE_ENEL_SP_RS_KWH, 5)
+ALIQUOTA_MEDIA_TRIBUTOS: float = 0.18
 TARIFA_EFETIVA_COM_TRIBUTOS_RS_KWH: float = round(
     TARIFA_BASE_ANEEL_RS_KWH / (1.0 - ALIQUOTA_MEDIA_TRIBUTOS), 5
-)  # 0.96266 R$/kWh
-CIP_COSIP_MENSAL_RS: float = 15.50 # cont de ilumin pública municipal estimada (R$/mês)
+)
+CIP_COSIP_MENSAL_RS: float = 15.50
 
 BANDEIRAS_ANEEL_RS_POR_100KWH: Dict[str, float] = {
     "verde": 0.00,
@@ -37,15 +32,9 @@ BANDEIRAS_ANEEL_RS_POR_100KWH: Dict[str, float] = {
     "vermelha_p2": 7.875,
 }
 
-# fator médio anual de emissão do "Sistema Interligado Nacional" (MCTI/SIRENE)
 FATOR_EMISSAO_SIN_KGCO2_KWH: float = 0.0385
-
-# custo de disponibilidade mínimo da rede (Monofásico = 30 kWh, Bifásico = 50 kWh)
 CUSTO_DISPONIBILIDADE_MONOFASICO_KWH: float = 30.0
-
-# investimento inicial (4 lâmpadas LED 9W Procel A + 1 filtro de linha com chave)
 INVESTIMENTO_ALT1_EFICIENCIA_RS: float = 48.00
-
 
 @dataclass
 class ItemConsumoAparelho:
@@ -282,8 +271,6 @@ def comparar_alternativas_energia(
     )
     co2_evitado_alt1_anual = round(reducao_kwh_mensal * 12.0 * FATOR_EMISSAO_SIN_KGCO2_KWH, 2)
 
-    # energia solar por Assinatura (Fonte Renovável - GD Compartilhada)
-    # Energia compensável = Consumo - Custo de disponibilidade mínimo da rede (30 kWh)
     kwh_compensados_alt2 = max(0.0, consumo_base_kwh - custo_disponibilidade_kwh)
     desconto_frac = desconto_solar_assinatura_pct / 100.0
     economia_alt2_mensal = round(
@@ -293,7 +280,6 @@ def comparar_alternativas_energia(
     economia_alt2_anual = round(economia_alt2_mensal * 12.0, 2)
     co2_compensado_alt2_anual = round(kwh_compensados_alt2 * 12.0 * FATOR_EMISSAO_SIN_KGCO2_KWH, 2)
 
-    # estratégia combinada (Eficiência + Solar por Assinatura sobre o consumo eficiente)
     kwh_compensados_comb = max(0.0, consumo_eficiente_kwh - custo_disponibilidade_kwh)
     economia_solar_sobre_eficiente = round(
         kwh_compensados_comb * TARIFA_EFETIVA_COM_TRIBUTOS_RS_KWH * desconto_frac, 2
