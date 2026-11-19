@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Citizen Assist AI — Assistente Digital de Energia e Sustentabilidade (SERS)
-Global Solution 2026.2 — 1º Ano de Ciência da Computação (1CC)
+Global Solution 2026.2 — 1º Ano de Ciência da Computação (1CCPQ)
 
 Frase-síntese:
 "Jovens de 16 a 24 anos que assumem sua primeira conta de luz com renda de primeiro
@@ -197,7 +197,7 @@ def executar_simulador_interativo(assistente: CitizenAssistEnergia) -> None:
     comb = comp["estrategia_combinada"]
 
     print("\n" + "=" * 84)
-    print("📊 RESULTADO DA SUA ANÁLISE PERSONALIZADA")
+    print("RESULTADO DA SUA ANÁLISE PERSONALIZADA")
     print("=" * 84)
     print(f"• Consumo analisado: {consumo_kwh:.2f} kWh/mês")
     print(f"• Fatura convencional estimada (Enel SP c/ tributos + CIP): R$ {res_tsee['fatura_sem_beneficio_rs']:.2f}/mês")
