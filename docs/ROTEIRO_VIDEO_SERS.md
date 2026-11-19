@@ -18,7 +18,7 @@
   > *"Aplicando a fórmula de potência, tempo de uso e período de 30 dias com base nas tabelas do PROCEL/INMETRO e na tarifa residencial B1 da Enel SP homologada pela ANEEL (R$ 0,789/kWh sem impostos ou R$ 0,962/kWh com tributos, mais R$ 15,50 de iluminação pública), modelamos uma moradia jovem com consumo base de 165 kWh/mês e fatura de R$ 174,34/mês, onde o chuveiro elétrico responde sozinho por 50% do gasto (82,5 kWh).*
   >
   > *Comparamos duas alternativas aplicáveis a quem mora de aluguel para o mesmo período mensal e anual:*
-  > *1) A Alternativa 1, de Eficiência Energética — troca de 4 lâmpadas para LED 9W, ajuste do chuveiro para o modo Verão por 10 minutos e filtro de linha contra stand-by — reduz o consumo em 38% (para 102,32 kWh/mês), gerando economia de R$ 60,34 por mês (R$ 724/ano), com investimento de R$ 48 que se paga em 24 dias e evitando 28,96 kg de CO2 por ano.*
+  > *1) A Alternativa 1, de Eficiência Energética — troca de 4 lâmpadas para LED 9W, chuveiro no modo Verão com banhos de 10 minutos e filtro de linha contra stand-by — reduz o consumo em 38% (para 102,32 kWh/mês), gerando economia de R$ 60,34 por mês (R$ 724/ano), com investimento de R$ 48 que se paga em 24 dias e evitando 28,96 kg de CO2 por ano.*
   > *2) A Alternativa 2, com fonte renovável, é a Energia Solar por Assinatura via Geração Distribuída Compartilhada (Lei 14.300/2022). Sem obras no telhado e com investimento inicial zero, o jovem recebe créditos de uma fazenda solar com 12% de desconto sobre os 135 kWh compensáveis, economizando R$ 15,60 por mês (R$ 187,20/ano) e contratando 1.620 kWh/ano de energia limpa (62,37 kg de CO2/ano)."*
 
 ---

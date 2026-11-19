@@ -28,7 +28,7 @@
     "fonte_fator_emissao": "MCTI / SIRENE - Fator Medio Anual de Emissao de CO2 do Sistema Interligado Nacional (SIN)"
   },
   "regras_tarifa_social_tsee": {
-    "base_legal": "Lei n. 12.212/2010, MP n. 1.300/2025 e Resolucoes Normativas ANEEL (REN n. 1.000/2021 e REN n. 1.147/2025)",
+    "base_legal": "Lei n. 12.212/2010, Lei n. 15.235/2025 (conversao da MP n. 1.300/2025) e Resolucoes Normativas ANEEL (REN n. 1.000/2021 e REN n. 1.147/2025)",
     "criterios_elegibilidade": [
       "Familia inscrita no Cadastro Unico (CadUnico) com renda familiar mensal per capita menor ou igual a meio salario minimo (mesma base exigida para a ID Jovem);",
       "Idosos com 65 anos ou mais ou pessoas com deficiencia que recebam o Beneficio de Prestacao Continuada (BPC);",

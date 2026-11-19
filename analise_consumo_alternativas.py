@@ -108,7 +108,29 @@ def carregar_aparelhos_csv(caminho_csv: Path | None = None) -> List[ItemConsumoA
                     observacao=linha["observacao"],
                 )
             )
+    validar_consumo_csv(itens)
     return itens
+
+
+def validar_consumo_csv(itens: List[ItemConsumoAparelho], tolerancia_kwh: float = 0.01) -> None:
+    """
+    Recalcula o consumo de cada aparelho (P x t x d x qtd / 1000) e confere com os
+    valores de kWh informados no CSV, para garantir que a tabela de dados e os
+    cálculos estão coerentes.
+    """
+    for item in itens:
+        base = calcular_energia_mensal_kwh(
+            item.potencia_w_base, item.horas_dia_base, item.dias_mes, item.quantidade
+        )
+        efic = calcular_energia_mensal_kwh(
+            item.potencia_w_eficiente, item.horas_dia_eficiente, item.dias_mes, item.quantidade
+        )
+        if abs(base - item.kwh_mes_base) > tolerancia_kwh or abs(efic - item.kwh_mes_eficiente) > tolerancia_kwh:
+            raise ValueError(
+                f"Consumo inconsistente no CSV para '{item.aparelho}': "
+                f"calculado base={base} / eficiente={efic}, "
+                f"informado base={item.kwh_mes_base} / eficiente={item.kwh_mes_eficiente}."
+            )
 
 
 def calcular_fatura_convencional(
@@ -337,16 +359,17 @@ def exibir_relatorio_completo() -> None:
 
     print("\n1. LEVANTAMENTO DE CONSUMO POR EQUIPAMENTO (PERÍODO DE REFERÊNCIA: 30 DIAS)")
     print("-" * 88)
-    print(f"{'Equipamento':<42} | {'Pot.(W)':>7} | {'h/dia':>5} | {'Base(kWh)':>9} | {'Efic.(kWh)':>10}")
+    print(f"{'Equipamento':<42} | {'Pot.(W)':>7} | {'h/dia*':>6} | {'Base(kWh)':>9} | {'Efic.(kWh)':>10}")
     print("-" * 88)
     for item in itens:
         nome_curto = item.aparelho[:42]
         print(
             f"{nome_curto:<42} | {item.potencia_w_base:>7.0f} | "
-            f"{item.horas_dia_base:>5.2f} | {item.kwh_mes_base:>9.2f} | {item.kwh_mes_eficiente:>10.2f}"
+            f"{item.horas_dia_base:>6.2f} | {item.kwh_mes_base:>9.2f} | {item.kwh_mes_eficiente:>10.2f}"
         )
     print("-" * 88)
-    print(f"{'TOTAL MENSAL ESTIMADO':<42} | {'-':>7} | {'-':>5} | {soma_base:>9.2f} | {soma_efic:>10.2f}")
+    print(f"{'TOTAL MENSAL ESTIMADO':<42} | {'-':>7} | {'-':>6} | {soma_base:>9.2f} | {soma_efic:>10.2f}")
+    print("* h/dia equivalentes de funcionamento no cenário base (geladeira: 24 h ligada x fator 0,5 do compressor = 12 h).")
 
     comp = comparar_alternativas_energia(soma_base, soma_efic)
     base = comp["cenario_base"]

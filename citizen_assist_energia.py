@@ -82,11 +82,15 @@ class CitizenAssistEnergia:
         confianca = min(0.95, 0.45 + 0.20 * maior_pontuacao)
         return melhor_topico, round(confianca, 2)
 
-    def formatar_resposta_topico(self, topico: Dict[str, object], confianca: float = 1.0) -> str:
+    def formatar_resposta_topico(self, topico: Dict[str, object], confianca: float | None = None) -> str:
         """Formata um tópico da base verificável com explicação, referências e limitações."""
         linhas = [
             "\n" + "=" * 84,
-            f"{topico['titulo']}  [Confiança da orientação: {confianca * 100:.0f}%]",
+            (
+                f"{topico['titulo']}  [Correspondência com a sua pergunta: {confianca * 100:.0f}%]"
+                if confianca is not None
+                else str(topico["titulo"])
+            ),
             "=" * 84,
             f"\nRESUMO ACESSÍVEL:\n   {topico['resumo_acessivel']}\n",
             "📋 ORIENTAÇÕES PASSO A PASSO E DADOS TÉCNICOS:",
@@ -238,7 +242,7 @@ def executar_simulador_interativo(assistente: CitizenAssistEnergia) -> None:
 
     print("\nAVISO DE LIMITAÇÕES E FONTES:")
     print("  • Cálculos baseados na tarifa residencial B1 da Enel SP (ANEEL 2026: R$ 0,78938/kWh s/ impostos; ~R$ 0,96266/kWh c/ tributos).")
-    print("  • Fontes: Lei nº 12.212/2010 e REN ANEEL nº 1.147/2025 (TSEE); Lei nº 14.300/2022 (GD Compartilhada); PROCEL/INMETRO; MCTI.")
+    print("  • Fontes: Lei nº 12.212/2010 alterada pela Lei nº 15.235/2025 (TSEE); Lei nº 14.300/2022 (GD Compartilhada); PROCEL/INMETRO; MCTI.")
     print("  • Estimativas não representam garantia de resultado financeiro e este assistente não é canal oficial do governo.")
     print("=" * 84)
 
@@ -272,13 +276,13 @@ def menu_interativo() -> None:
 
         inicio = time.time()
         if escolha == "1":
-            print(assistente.formatar_resposta_topico(assistente.topicos[0], confianca=1.0))
+            print(assistente.formatar_resposta_topico(assistente.topicos[0]))
             assistente.registrar_indicador("topico_1_ler_fatura", time.time() - inicio, True, 5)
         elif escolha == "2":
-            print(assistente.formatar_resposta_topico(assistente.topicos[1], confianca=1.0))
+            print(assistente.formatar_resposta_topico(assistente.topicos[1]))
             assistente.registrar_indicador("topico_2_tarifa_social", time.time() - inicio, True, 5)
         elif escolha == "3":
-            print(assistente.formatar_resposta_topico(assistente.topicos[2], confianca=1.0))
+            print(assistente.formatar_resposta_topico(assistente.topicos[2]))
             assistente.registrar_indicador("topico_3_comparar_alternativas", time.time() - inicio, True, 5)
         elif escolha == "4":
             executar_simulador_interativo(assistente)

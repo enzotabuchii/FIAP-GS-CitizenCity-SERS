@@ -12,6 +12,7 @@ from analise_consumo_alternativas import (
     carregar_aparelhos_csv,
     comparar_alternativas_energia,
     simular_tarifa_social_tsee,
+    validar_consumo_csv,
 )
 from citizen_assist_energia import CitizenAssistEnergia
 
@@ -29,6 +30,12 @@ class TestCitizenAssistEnergiaSERS(unittest.TestCase):
         soma_efic = round(sum(i.kwh_mes_eficiente for i in itens), 2)
         self.assertAlmostEqual(soma_base, 165.00, places=2)
         self.assertAlmostEqual(soma_efic, 102.32, places=2)
+
+    def test_csv_inconsistente_e_detectado(self) -> None:
+        itens = carregar_aparelhos_csv()
+        itens[0].kwh_mes_base = 999.0
+        with self.assertRaises(ValueError):
+            validar_consumo_csv(itens)
 
     def test_tarifa_social_ate_80kwh_isencao_consumo(self) -> None:
         res = simular_tarifa_social_tsee(

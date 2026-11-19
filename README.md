@@ -30,14 +30,14 @@ A solução transforma conceitos técnicos em explicações simples e simulaçõ
 
 ## Navegação
 
-- [Contexto e problema](#-contexto-e-problema)
-- [Funcionalidades](#-funcionalidades)
-- [Dados e premissas](#-dados-e-premissas)
-- [Resultados principais](#-resultados-principais)
-- [Como executar](#-como-executar)
-- [Testes com usuários](#-testes-com-usuários)
-- [Integrantes](#-integrantes)
-- [Referências](#-referências)
+- [Contexto e problema](#contexto-e-problema)
+- [Funcionalidades](#funcionalidades)
+- [Dados e premissas](#dados-e-premissas)
+- [Resultados principais](#resultados-principais)
+- [Como executar](#como-executar)
+- [Testes com usuários](#testes-com-usuários)
+- [Integrantes](#integrantes)
+- [Referências](#referências)
 
 ---
 
@@ -64,8 +64,8 @@ Explicações diretas sobre leitura da fatura, consumo em kWh, TE, TUSD, bandeir
 
 Orientações sobre elegibilidade e regras relacionadas ao CadÚnico e à ID Jovem, incluindo:
 
-- isenção de 100% na tarifa de consumo até 80 kWh/mês, conforme as premissas adotadas no projeto;
-- desconto social para faixas de consumo superiores;
+- desconto de 100% na tarifa para o consumo até 80 kWh/mês e 0% acima disso (Lei nº 15.235/2025);
+- isenção da CDE até 120 kWh/mês para famílias no CadÚnico com renda per capita entre meio e um salário mínimo;
 - alerta de que a CIP/COSIP municipal pode continuar sendo cobrada.
 
 ### Comparador de alternativas
@@ -80,7 +80,7 @@ O comparador apresenta custo mensal, economia anual, investimento inicial, *payb
 
 ### Simulador personalizado
 
-Permite informar o consumo estimado em kWh e testar cenários de forma interativa, sem coletar dados pessoais. Indicadores de uso são registrados em [`dados/indicadores_uso.json`](dados/indicadores_uso.json).
+Permite informar o consumo estimado em kWh e testar cenários de forma interativa, sem coletar dados pessoais. Ao usar o assistente, indicadores anônimos de uso (tempo e opções acessadas) são gravados localmente em `dados/indicadores_uso.json`; o arquivo é criado na primeira execução.
 
 ---
 
@@ -145,6 +145,8 @@ Referência: 30 dias, 12 meses e consumo inicial de 165,00 kWh/mês.
 
 - Cooperativas e consórcios de energia solar podem exigir consumo mínimo, titularidade regular e atenção a cláusulas de fidelidade.
 - A Tarifa Social não elimina necessariamente a CIP/COSIP municipal.
+- O fator de emissão usado (média de 2023) é maior que os fatores publicados a partir de 2025, então as emissões evitadas podem estar superestimadas.
+- A alíquota de ICMS de 18% é uma simplificação; com 12% (faixa usual de 90 a 200 kWh em SP), os valores em reais seriam cerca de 7% menores. Detalhes em [`docs/CALCULOS_E_JUSTIFICATIVAS.md`](docs/CALCULOS_E_JUSTIFICATIVAS.md).
 - Valores tarifários, descontos e regras podem mudar; as simulações são educativas e não substituem a consulta à distribuidora ou aos órgãos oficiais.
 
 ---
@@ -183,7 +185,7 @@ Os testes foram realizados com jovens do público-alvo, sem coleta de dados pess
 
 ---
 
-## ntegrantes
+## Integrantes
 
 **FIAP — 1º Ano de Ciência da Computação (1CCPQ)**  
 Global Solution 2026.2 · CitizenTech  
@@ -199,12 +201,15 @@ Disciplina: **Soluções em Energias Renováveis e Sustentáveis (SERS)**
 
 ## Referências
 
-1. [ANEEL — Tarifa Social de Energia Elétrica](https://www.gov.br/aneel)
-2. [Enel Distribuição São Paulo](https://www.enel.com.br)
-3. [Lei nº 14.300/2022 — Marco Legal da Geração Distribuída](https://www.planalto.gov.br)
-4. [INMETRO — Eficiência energética](https://www.gov.br/inmetro)
-5. [MCTI — Fatores de emissão](https://www.gov.br/mcti)
-6. [MDS — Cadastro Único e ID Jovem](https://www.gov.br/mds)
+1. [Lei nº 15.235/2025 — Nova Tarifa Social de Energia Elétrica (100% de desconto até 80 kWh/mês)](https://www.gov.br/mme/pt-br/acesso-a-informacao/legislacao/leis/lei-n-15-235-2025.pdf)
+2. [Lei nº 12.212/2010 — Tarifa Social de Energia Elétrica (texto atualizado)](https://planalto.gov.br/ccivil_03/_Ato2007-2010/2010/Lei/L12212.htm)
+3. [Lei nº 14.300/2022 — Marco Legal da Geração Distribuída (geração compartilhada)](https://planalto.gov.br/ccivil_03/_ato2019-2022/2022/lei/l14300.htm)
+4. [ANEEL aprova Reajuste Tarifário 2026 da Enel SP (vigente desde 04/07/2026)](https://cenarioenergia.com.br/2026/06/30/aneel-aprova-reajuste-da-enel-sao-paulo-com-efeito-medio-de-1018/)
+5. [Tarifa B1 residencial da Enel SP antes do reajuste 2026 (R$ 725,18/MWh)](https://exame.com/economia/conta-de-luz-sp-aumento-enel-reajuste-tarifa-aneel-julho)
+6. [MCTI — Fator médio de emissão do SIN em 2023 (38,5 kg CO₂/MWh)](https://mais.opovo.com.br/jornal/economia/2024/02/15/geracao-de-energia-no-brasil-atinge-menor-emissao-de-co2-em-11-anos.html)
+7. [MCTI — Nota técnica de junho/2025 sobre os novos fatores de emissão do SIN](https://cenarioenergia.com.br/wp-content/uploads/2025/06/NT_FE_jun25.pdf)
+8. [INMETRO/PROCEL — Tabelas de consumo e eficiência energética (PBE)](http://www.inmetro.gov.br/consumidor/tabelas.asp)
+9. [Idec — Cartilha de eficiência energética residencial](https://idec.org.br/sites/default/files/idec_cartilha-energia_02.pdf)
 
 > Consultas e parâmetros utilizados no trabalho: **novembro de 2026**. Consulte sempre as fontes oficiais para obter regras e tarifas atualizadas.
 

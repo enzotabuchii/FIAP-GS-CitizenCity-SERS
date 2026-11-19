@@ -32,7 +32,7 @@
         "Como solicitar: A concessao deve ser automatica se a conta de luz estiver no CPF de quem faz parte da familia no CadUnico. Caso nao venha na fatura, basta informar o NIS (Numero de Identificacao Social) e CPF no app/site da distribuidora ou atualizar o CadUnico no CRAS."
       ],
       "referencias": [
-        "Lei Federal n. 12.212/2010, MP n. 1.300/2025 e Resolucao Normativa ANEEL n. 1.000/2021 / n. 1.147/2025 (Consultado em nov/2026)",
+        "Lei Federal n. 12.212/2010, Lei n. 15.235/2025 (conversao da MP n. 1.300/2025) e Resolucao Normativa ANEEL n. 1.000/2021 / n. 1.147/2025 (Consultado em nov/2026)",
         "Ministerio do Desenvolvimento e Assistencia Social (MDS) - Cadastro Unico e ID Jovem (gov.br/mds - Consultado em nov/2026)"
       ],
       "limitacoes": "A conta de luz nao fica necessariamente R$ 0,00 mesmo abaixo de 80 kWh/mes, pois a taxa municipal de iluminacao publica (CIP/COSIP) e tributos especificos ainda podem ser cobrados. O cadastro no CadUnico precisa estar atualizado (menos de 2 anos)."
@@ -43,7 +43,7 @@
       "palavras_chave": ["comparar", "alternativas", "solar", "assinatura", "renovavel", "led", "eficiencia", "aluguel", "republica", "economia"],
       "resumo_acessivel": "Quem mora de aluguel ou divide republica nao precisa instalar placas no telhado para usar energia limpa ou economizar. Comparamos duas alternativas reais para um consumo base de 165 kWh/mes (R$ 174,34/mes):",
       "explicacao_detalhada": [
-        "Alternativa 1 - Eficiencia Energetica e Habitos (Troca de 4 lampadas para LED 9W + Chuveiro na posicao Verao/10 min + corte de stand-by): Reduz o consumo de 165 kWh para 102,32 kWh/mes (-38%). Investimento inicial de R$ 48,00 (4 LEDs + filtro de linha), economia estimada de R$ 60,34/mes (R$ 724,08/ano) e retorno (payback) em menos de 1 mes (24 dias). Evita ~28,96 kg de CO2/ano.",
+        "Alternativa 1 - Eficiencia Energetica e Habitos (Troca de 4 lampadas para LED 9W + Chuveiro na posicao Verao com banhos de 10 min + corte de stand-by): Reduz o consumo de 165 kWh para 102,32 kWh/mes (-38%). Investimento inicial de R$ 48,00 (4 LEDs + filtro de linha), economia estimada de R$ 60,34/mes (R$ 724,08/ano) e retorno (payback) em menos de 1 mes (24 dias). Evita ~28,96 kg de CO2/ano.",
         "Alternativa 2 - Energia Solar por Assinatura / Geracao Compartilhada (Lei 14.300/2022): Voce assina digitalmente cotas de uma fazenda solar cooperativa (R$ 0,00 de adesao e sem obras no imovel alugado). Os creditos solares abatem a fatura com ~12% de desconto na energia compensada (135 kWh compensados, mantendo 30 kWh de taxa minima da rede). Economia estimada de R$ 15,60/mes (R$ 187,20/ano) e compensacao de 1.620 kWh/ano de fonte renovavel (~62,37 kg de CO2/ano).",
         "Qual escolher? A Eficiencia Energetica traz a maior reducao imediata no boleto (R$ 60,34/mes) para o orcamento curto do primeiro emprego. A Energia Solar por Assinatura permite apoiar uma fonte 100% renovavel sem ter telhado proprio, mas exige consumo minimo exigido pelas cooperativas (geralmente > 120 a 150 kWh/mes) e nao vale a pena para quem ja tem Tarifa Social abaixo de 80 kWh/mes."
       ],
